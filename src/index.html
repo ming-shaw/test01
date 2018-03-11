@@ -7,12 +7,15 @@
     <title>首页</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
-<p>hello</p>
-
+<body ng-app="app">
+<navs></navs>
+<tabbar></tabbar>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="js/index.js"></script>
 <script>
-    var viewP = window.screen.width;
-    document.getElementsByTagName("html")[0].style.fontSize = viewP/37.5+"px";
+    var fz = window.screen.width/10+"px";
+    document.getElementsByTagName("html")[0].style.fontSize = fz;
 </script>
 </body>
 </html>

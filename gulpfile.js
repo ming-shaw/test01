@@ -35,7 +35,7 @@ gulp.task('html',function () {
  * 把less文件转成css放到build
  * */
 gulp.task('less',function () {
-    gulp.src(app.srcPath+'style/index.less')
+    gulp.src(app.srcPath+'css/index.less')
         .pipe(less())
         .pipe(gulp.dest(app.buildPath+'css/'))
         /*经过压缩，放到dist目录当中*/
@@ -73,7 +73,6 @@ gulp.task('image',function () {
  * 当前bulid时，会自动把数组当中的所有任务给执行了。
  * */
 gulp.task('build',['less','html','js','image','lib']);
-
 
 /*定义server任务
  * 搭建一个服务器。设置运行的构建目录

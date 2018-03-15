@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app" ng-controller="appController">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>首页</title>
+    <title ng-bind="appTitle"></title>
     <link rel="stylesheet" href="css/index.css">
 </head>
-<body ng-app="app">
+
+<body>
+<!--导航-->
 <navs></navs>
+
+<!--各页面-->
+<div class="content">
+    <div ui-view="home" ng-show="index==0"></div>
+    <div ui-view="content" ng-show="index==1">content</div>
+    <div ui-view="author" ng-show="index==2">author</div>
+    <div ui-view="mine" ng-show="index==3">mine</div>
+</div>
+
+<!--tabbar-->
 <tabbar></tabbar>
+
 <script src="lib/angular/angular.min.js"></script>
 <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="js/index.js"></script>

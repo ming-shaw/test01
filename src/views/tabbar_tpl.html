@@ -1,27 +1,27 @@
 <div class="tabbar">
     <ul>
-        <li>
-            <a href="">
-                <img src="images/tabbar/home_icon.png" alt="">
-                <p>首页</p>
+        <li ng-click="tabChange('0')">
+            <a ui-sref="home">
+                <img ng-src="images/tabbar/{{index==0 ? 'homeSel.png': 'home_icon.png'}}" alt="">
+                <p ng-class="{current:index==0}">首页</p>
             </a>
         </li>
-        <li>
-            <a href="">
-                <img src="images/tabbar/home_icon.png" alt="">
-                <p>首页</p>
+        <li ng-click="tabChange('1')">
+            <a ui-sref="content">
+                <img src="images/tabbar/{{index==1 ? 'authorSel.png': 'author_icon.png'}}" alt="">
+                <p ng-class="{current:index==1}">内容</p>
             </a>
         </li>
-        <li>
-            <a href="">
-                <img src="images/tabbar/home_icon.png" alt="">
-                <p>首页</p>
+        <li ng-click="tabChange('2')">
+            <a ui-sref="author">
+                <img src="images/tabbar/{{index==2 ? 'contentSel.png': 'content_icon.png'}}" alt="">
+                <p ng-class="{current:index==2}">作者</p>
             </a>
         </li>
-        <li>
-            <a href="">
-                <img src="images/tabbar/home_icon.png" alt="">
-                <p>首页</p>
+        <li ng-click="tabChange('3')">
+            <a ui-sref="mine">
+                <img src="images/tabbar/{{index==3 ? 'mySel.png': 'my_icon.png'}}" alt="">
+                <p ng-class="{current:index==3}">我的</p>
             </a>
         </li>
     </ul>

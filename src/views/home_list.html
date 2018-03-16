@@ -1,0 +1,21 @@
+<div class="list" ng-repeat="value in listData.posts" ui-sref="index.detail({detail:value.content})" >
+    <span class="tag" ng-if="value.column.name">{{value.column.name}}</span>
+    <h3 ng-bind="value.title"></h3>
+    <!--样式1-->
+    <div class="post1" ng-if="value['display_style']==10001">
+        <p ng-bind="value.abstract"></p>
+    </div>
+    <!--样式2-->
+    <div class="post2 clearfix" ng-if="value['display_style']==10002">
+        <p ng-bind="value.abstract"></p>
+        <img ng-src="{{value.thumbs[0].small.url}}" alt="配图">
+    </div>
+    <!--样式3-->
+    <div class="post3" ng-if="value['display_style']==10003">
+        <ul>
+            <li><img ng-src="{{value.thumbs[0].small.url}}" alt="配图1"></li>
+            <li><img ng-src="{{value.thumbs[1].small.url}}" alt="配图2"></li>
+            <li><img ng-src="{{value.thumbs[2].small.url}}" alt="配图3"></li>
+        </ul>
+    </div>
+</div>

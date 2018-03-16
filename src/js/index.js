@@ -48,6 +48,12 @@
         }
     })
 
+    // 配置白名单
+    app.config(["$sceDelegateProvider",function ($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+            "self", "http://127.0.0.1/doubanAPI/**"
+        ])
+    }])
     // 配置tabbar内容路由
     app.config(["$stateProvider","$urlRouterProvider",function ($stateProvider, $urlRouterProvider) {
         $stateProvider.state("index",{
@@ -55,8 +61,16 @@
             views:{
                 home:{
                     templateUrl:"../views/home_tpl.html",
-                    controller:["$scope",function ($scope) {
-
+                    controller:["$scope","$http",function ($scope,$http) {
+                        $http({
+                            url:"http://127.0.0.1/doubanAPI/home.php",
+                            method:"jsonp"
+                        }).then(function (res) {
+                            $scope.listData = res.data;
+                            console.log($scope.listData);
+                        }).catch(function (err) {
+                            console.log(err);
+                        })
                     }]
                 },
                 content:{
@@ -70,7 +84,21 @@
                 }
             },
 
+        }).state("index.list", { // 配置子路由
+            url:"/list",
+            templateUrl:"../views/home_list.html",
+            controller:["$scope", function ($scope) {
+
+            }]
+        }).state("index.detail", { // 配置子路由
+            url:"/detail/:detail",
+            templateUrl:"../views/detail_tpl.html",
+            controller:["$scope", "$stateParams","$sce",function ($scope,$stateParams,$sce) {
+                $scope.detail = $sce.trustAsHtml($stateParams.detail);
+
+                // alert($stateParams.detail);
+            }]
         })
-        $urlRouterProvider.otherwise("/index");
+        $urlRouterProvider.otherwise("/index/list");
     }])
 })(angular)
